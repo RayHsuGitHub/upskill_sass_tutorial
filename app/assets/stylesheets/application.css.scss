@@ -17,17 +17,21 @@
  @import 'bootstrap-sprockets';
  @import 'bootstrap';
  
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+ 
+//changed header font style 
 h1, h2, h3 {
      font-family: 'Open Sans', sans-serif;
  }
- 
+//gradient color change 
 .home-callout, .navbar{
 background: #fd746c; /* fallback for old browsers */
 background: -webkit-linear-gradient(to left, #fd746c , #ff9068); /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to left, #fd746c , #ff9068); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
-
+// Navigation bar color change
 .navbar-default .navbar-brand, 
 .navbar-default .navbar-nav > li > a {
     
@@ -37,12 +41,15 @@ background: linear-gradient(to left, #fd746c , #ff9068); /* W3C, IE 10+/ Edge, F
      opacity: 0.75;
      }
 }
+
+//remove navbar boarder
 .navbar {
     
     border:none; 
     
 }
 
+//changed text and home layout "padding, margins"
 .home-callout {
     
     color:white;
