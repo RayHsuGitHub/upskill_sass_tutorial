@@ -3,32 +3,25 @@
 $(document).on('turbolinks:load', function(){
   var theForm = $('#pro_form');
   var submitBtn = $('#form-submit-btn');
-  
   //Set Stripe public key.
   Stripe.setPublishableKey( $('meta[name="stripe-key"]').attr('content') );
- 
   //When user clicks form submit btn,
   submitBtn.click(function(event){
-   
     //prevent default submission behavior.
     event.preventDefault();
     submitBtn.val("Processing").prop('disabled', true);
-    
     //Collect the credit card fields.
     var ccNum = $('#card_number').val(),
         cvcNum = $('#card_code').val(),
         expMonth = $('#card_month').val(),
         expYear = $('#card_year').val();
-  
     //Use Stripe JS library to check for card errors.
     var error = false;
-   
     //Validate card number.
     if(!Stripe.card.validateCardNumber(ccNum)) {
       error = true;
       alert('The credit card number appears to be invalid');
     }
-   
     //Validate CVC number.
     if(!Stripe.card.validateCVC(cvcNum)) {
       error = true;
