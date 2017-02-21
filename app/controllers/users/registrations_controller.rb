@@ -4,6 +4,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #Save with a special Stripe subscription function.
   # Otherwise Devise signs up users as usual.
   
+  before_action :select_plan, only: :new
+  
   def create
     super do |resource|
       if params[:plan]
@@ -16,4 +18,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
     end
   end
+  private 
+    def select_plan
+     unless (params[:plan] == '1' || params[:plan] == '2') 
+       flash[:notice] = "Please select a membership plan to sign up."
+       redirect_to root_path
+     end
+    end
 end
